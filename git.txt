@@ -1,0 +1,146 @@
+student@Lab3N5:~$ git --version
+git version 1.9.1
+student@Lab3N5:~$ git config --global user.name "crazytitan99"
+student@Lab3N5:~$ git config --global user.email "tecdroid3050@gmail.com"
+student@Lab3N5:~$ git config --list
+user.name=crazytitan99
+user.email=tecdroid3050@gmail.com
+student@Lab3N5:~$ mkdir git
+student@Lab3N5:~$ cd git
+student@Lab3N5:~/git$ git clone https://github.com/crazytitan99/CRZAY.git
+Cloning into 'CRZAY'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+Checking connectivity... done.
+student@Lab3N5:~/git$ cd CRAZY
+bash: cd: CRAZY: No such file or directory
+student@Lab3N5:~/git$ cd CRZAY
+student@Lab3N5:~/git/CRZAY$ git branch
+* master
+student@Lab3N5:~/git/CRZAY$ git branch 007
+student@Lab3N5:~/git/CRZAY$ git branch
+  007
+* master
+student@Lab3N5:~/git/CRZAY$ git branch
+  007
+* master
+student@Lab3N5:~/git/CRZAY$ touch python.py
+student@Lab3N5:~/git/CRZAY$ gedit python.py
+student@Lab3N5:~/git/CRZAY$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	python.py
+	python.py~
+
+nothing added to commit but untracked files present (use "git add" to track)
+student@Lab3N5:~/git/CRZAY$ git add python.py
+student@Lab3N5:~/git/CRZAY$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   python.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	python.py~
+
+student@Lab3N5:~/git/CRZAY$ git commit -m "commited"
+[master 6a7e04e] commited
+ 1 file changed, 2 insertions(+)
+ create mode 100644 python.py
+student@Lab3N5:~/git/CRZAY$ git push -u origin master
+Username for 'https://github.com': crazytitan99
+Password for 'https://crazytitan99@github.com': 
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 297 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/crazytitan99/CRZAY.git
+   06bf612..6a7e04e  master -> master
+Branch master set up to track remote branch master from origin.
+student@Lab3N5:~/git/CRZAY$ gedit python.py
+student@Lab3N5:~/git/CRZAY$ git checkout 007
+error: Your local changes to the following files would be overwritten by checkout:
+	python.py
+Please, commit your changes or stash them before you can switch branches.
+Aborting
+student@Lab3N5:~/git/CRZAY$ git diff
+diff --git a/python.py b/python.py
+index a3a4d1d..69163f0 100644
+--- a/python.py
++++ b/python.py
+@@ -1,2 +1,2 @@
+ def add(a,b):  
+-       pass
++       return a+b
+student@Lab3N5:~/git/CRZAY$ git checkout 007
+error: Your local changes to the following files would be overwritten by checkout:
+	python.py
+Please, commit your changes or stash them before you can switch branches.
+Aborting
+student@Lab3N5:~/git/CRZAY$ git branch s716
+student@Lab3N5:~/git/CRZAY$ git checkout s716
+M	python.py
+Switched to branch 's716'
+student@Lab3N5:~/git/CRZAY$ git branch 
+  007
+  master
+* s716
+student@Lab3N5:~/git/CRZAY$ git stash save "saved"
+Saved working directory and index state On s716: saved
+HEAD is now at 6a7e04e commited
+student@Lab3N5:~/git/CRZAY$ git status
+On branch s716
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	python.py~
+
+nothing added to commit but untracked files present (use "git add" to track)
+student@Lab3N5:~/git/CRZAY$ git add python.py
+student@Lab3N5:~/git/CRZAY$ git status
+On branch s716
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	python.py~
+
+nothing added to commit but untracked files present (use "git add" to track)
+student@Lab3N5:~/git/CRZAY$ git add python.py~
+student@Lab3N5:~/git/CRZAY$ git status
+On branch s716
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   python.py~
+
+student@Lab3N5:~/git/CRZAY$ git commit -m "commited"
+[s716 c4dc1bd] commited
+ 1 file changed, 2 insertions(+)
+ create mode 100644 python.py~
+student@Lab3N5:~/git/CRZAY$ git stash list
+stash@{0}: On s716: saved
+student@Lab3N5:~/git/CRZAY$ git stash pop
+On branch s716
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   python.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (2c2395f9661caf5b7024e593f81a826e7ea80886)
+student@Lab3N5:~/git/CRZAY$ git stash list
+student@Lab3N5:~/git/CRZAY$ 
+
